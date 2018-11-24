@@ -6,8 +6,8 @@ Cell::Cell(bool isAlive) : m_alive(isAlive) {}
 Cell::~Cell(){}
 
 bool    Cell::isAlive() { return m_alive; }
-Cell&   Cell::kill()    { m_alive = false; }
-Cell&   Cell::unkill()  { m_alive = true; }
+Cell&   Cell::kill()    { m_alive = false; return *this; }
+Cell&   Cell::unkill()  { m_alive = true;  return *this; }
 
 int     Cell::countAliveNeighbours()
 {

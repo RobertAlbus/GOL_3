@@ -4,9 +4,6 @@
 #include <vector>
 #include "Cell.h"
 
-
-
-
 class Map2D
 {
     using Row       = std::vector<Cell>;
@@ -19,6 +16,8 @@ class Map2D
         ~Map2D();
         Map2D(const Map2D& other);
 
+        void size();
+        Map2D& print();
 
         friend bool operator== (const Map2D map1, const Map2D map2);
         Row operator[] (int index);
@@ -26,16 +25,15 @@ class Map2D
     protected:
 
     private:
-        int m_width = 40;
+        int m_width  = 40;
         int m_height = 40;
 
         Matrix m_matrix;
 
-        void init();
+        void init(int chance);
 
-        int countAliveNeighbours();
+        void setNeighbourLists();
         Map2D& updateState();
-
 };
 
 #endif // MAP2D_H
