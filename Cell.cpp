@@ -9,13 +9,28 @@ bool    Cell::isAlive() { return m_alive; }
 Cell&   Cell::kill()    { m_alive = false; return *this; }
 Cell&   Cell::unkill()  { m_alive = true;  return *this; }
 
-int     Cell::countAliveNeighbours()
+Cell&   Cell::countAliveNeighbours()
 {
     int aliveNeighbours = 0;
     for (auto cell : m_neighbourList)
         if (cell->isAlive())
             ++aliveNeighbours;
-    return aliveNeighbours;
+    m_aliveNeighbours = aliveNeighbours;
+    return *this;
+}
+
+Cell&   Cell::updateState()
+{
+    if (m_alive)
+    {
+        if (m_aliveNeighbours > 4 || m_aliveNeighbours < 3)
+        this->kill();
+    }
+    else
+    {
+        if (m_aliveNeighbours <= 4 || m_aliveNeighbours >= 3)
+            this->unkill();
+    }
 }
 
 Cell&   Cell::operator[](const int index)    // access neighbour

@@ -143,11 +143,17 @@ void Map2D::setNeighbourLists()
 
 Map2D& Map2D::updateState()
 {
-    for (auto row : m_matrix)
-        for (auto cell : row)
+    for (Row row : m_matrix)
+        for (Cell cell : row)
         {
-
+            cell.countAliveNeighbours();
         }
+    for (Row row : m_matrix)
+        for (Cell cell : row)
+        {
+            cell.updateState();
+        }
+
 }
 
 Map2D::Row Map2D::operator[] (int index)
