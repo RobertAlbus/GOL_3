@@ -38,16 +38,6 @@ TEST_CASE( "Cell state management tests"){
 
 TEST_CASE( "Cell.addNeighbourList() tests" ){
 
-    #include <array>
-
-    Cell cell(true);
-    std::array<Cell*, 8> newList;
-    for (int i = 0; i < 4; ++i)
-        newList[i] = new Cell(true);
-    for (int i = 0; i < 4; ++i)
-        newList[i + 4] = new Cell(false);
-
-    cell.addNeighbourList(newList);
 }
 
 

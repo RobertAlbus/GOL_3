@@ -67,79 +67,81 @@ void Map2D::setNeighbourLists()
             bool on_S_edge { y == m_height - 1 };
             bool on_W_edge { x == 0 };
 
-            Cell& self = m_matrix[y][x];
+            Cell& cell = m_matrix[y][x];
+            std::array<Cell*, 8> neighbourList;
 
         ////////
         // N
             if (on_N_edge)
-                self + (m_matrix[m_height - 1][x]);
+                neighbourList[0] = &(m_matrix[m_height - 1][x]);
             else
-                self + (m_matrix[y - 1][x]);
+                neighbourList[0] = &(m_matrix[y - 1][x]);
 
         ////////
         // NE
             if (on_N_edge && on_E_edge)
-                self + m_matrix[m_height - 1][0];
+                neighbourList[1] = &(m_matrix[m_height - 1][0]);
             else if (on_N_edge && !on_E_edge)
-                self + m_matrix[m_height - 1][x + 1];
+                neighbourList[1] = &(m_matrix[m_height - 1][x + 1]);
             else if (!on_N_edge && on_E_edge)
-                self + m_matrix[y - 1][0];
+                neighbourList[1] = &(m_matrix[y - 1][0]);
             else if (!on_N_edge && !on_E_edge)
-                self + m_matrix[y - 1][x + 1];
-
+                neighbourList[1] = &(m_matrix[y - 1][x + 1]);
         ////////
         // E
             if (on_E_edge)
-                self + (m_matrix[y][0]);
+                neighbourList[2] = &(m_matrix[y][0]);
             else
-                self + (m_matrix[y][x + 1]);
+                neighbourList[2] = &(m_matrix[y][x + 1]);
 
         ////////
         // SE
             if (on_S_edge && on_E_edge)
-                self + m_matrix[0][0];
+                neighbourList[3] = &(m_matrix[0][0]);
             else if (on_S_edge && !on_E_edge)
-                self + m_matrix[0][x + 1];
+                neighbourList[3] = &(m_matrix[0][x + 1]);
             else if (!on_S_edge && on_E_edge)
-                self + m_matrix[y + 1][0];
+                neighbourList[3] = &(m_matrix[y + 1][0]);
             else if (!on_S_edge && !on_E_edge)
-                self + m_matrix[y + 1][x + 1];
+                neighbourList[3] = &(m_matrix[y + 1][x + 1]);
 
         ////////
         // S
             if (on_S_edge)
-                self + (m_matrix[0][x]);
+                neighbourList[4] = &(m_matrix[0][x]);
             else
-                self + (m_matrix[y + 1][x]);
+                neighbourList[4] = &(m_matrix[y + 1][x]);
 
         ////////
         // SW
             if (on_S_edge && on_W_edge)
-                self + m_matrix[0][m_width - 1];
+                neighbourList[5] = &(m_matrix[0][m_width - 1]);
             else if (on_S_edge && !on_W_edge)
-                self + m_matrix[0][x - 1];
+                neighbourList[5] = &(m_matrix[0][x - 1]);
             else if (!on_S_edge && on_W_edge)
-                self + m_matrix[y + 1][m_width - 1];
+                neighbourList[5] = &(m_matrix[y + 1][m_width - 1]);
             else if (!on_S_edge && !on_W_edge)
-                self + m_matrix[y + 1][x - 1];
+                neighbourList[5] = &(m_matrix[y + 1][x - 1]);
 
         ////////
         // W
             if (on_W_edge)
-                self + (m_matrix[y][m_width - 1]);
+                neighbourList[6] = &(m_matrix[y][m_width - 1]);
             else
-                self + (m_matrix[y][x - 1]);
+                neighbourList[6] = &(m_matrix[y][x - 1]);
 
         ////////
         // NW
             if (on_N_edge && on_W_edge)
-                self + m_matrix[m_height - 1][m_width - 1];
+                neighbourList[7] = &(m_matrix[m_height - 1][m_width - 1]);
             else if (on_N_edge && !on_W_edge)
-                self + m_matrix[m_height - 1][x - 1];
+                neighbourList[7] = &(m_matrix[m_height - 1][x - 1]);
             else if (!on_N_edge && on_W_edge)
-                self + m_matrix[y - 1][m_width - 1];
+                neighbourList[7] = &(m_matrix[y - 1][m_width - 1]);
             else if (!on_N_edge && !on_W_edge)
-                self + m_matrix[y - 1][x - 1];
+                neighbourList[7] = &(m_matrix[y - 1][x - 1]);
+
+            cell.addNeighbourList(neighbourList);
         }
 }
 
