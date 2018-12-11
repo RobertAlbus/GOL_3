@@ -13,7 +13,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
+					<Add directory="/usr/lib" />
+					<Add directory="/home/robert/programs/GOL_3/" />
+					<Add directory="/home/robert/programs/GOL_3/src/" />
+					<Add directory="/home/robert/programs/GOL_3/test/" />
+					<Add directory="/home/robert/programs/GOL_3/libs" />
+					<Add directory="/home/robert/programs/GOL_3/libs/catch2" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -34,12 +39,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Cell.cpp" />
-		<Unit filename="Cell.h" />
-		<Unit filename="Map2D.cpp" />
-		<Unit filename="Map2D.h" />
-		<Unit filename="TO.DO" />
-		<Unit filename="main.cpp" />
+		<Unit filename="libs/catch.hpp" />
+		<Unit filename="libs/catch_reporter_automake.hpp" />
+		<Unit filename="libs/catch_reporter_tap.hpp" />
+		<Unit filename="libs/catch_reporter_teamcity.hpp" />
+		<Unit filename="src/Cell.cpp" />
+		<Unit filename="src/Cell.h" />
+		<Unit filename="src/Map2D.cpp" />
+		<Unit filename="src/Map2D.h" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="test/Cell_TEST.h" />
+		<Unit filename="test/TEST.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
