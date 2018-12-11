@@ -1,5 +1,6 @@
 #include "Cell.h"
 #include <cassert>
+#include <array> //for addNeighbourList()
 
 
 
@@ -35,15 +36,25 @@ Cell&   Cell::updateState()
     }
 }
 
+Cell& Cell::addNeighbourList(std::array<Cell*, 8> newList)
+{
+    for (int i = 0; i < 8; ++i)
+    {
+        assert(typeid(m_neighbourList[i]) != typeid(Cell*));
+        m_neighbourList[i] = newList[i];
+    }
+    return *this;
+}
+
 Cell&   Cell::operator[](const int index)    // access neighbour
 {
     assert(index > 0 && index < 9);
     return *m_neighbourList[index];
 }
-Cell&   Cell::operator+(Cell c2)       // add a cell to neighnbour list
-{
-    this->m_neighbourList.push_back((&c2));
-    return *this;
-}
+//Cell&   Cell::operator+(Cell c2)       // add a cell to neighnbour list
+//{
+//    this->m_neighbourList.push_back((&c2));
+//    return *this;
+//}
 
 

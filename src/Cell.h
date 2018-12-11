@@ -1,13 +1,13 @@
 #ifndef CELL_H
 #define CELL_H
 
-#include <vector>
+#include <array> // for m_neighbourList
 
 class Cell
 {
     private:
         bool m_alive = false;
-        std::vector<Cell*> m_neighbourList;
+        std::array<Cell*, 8> m_neighbourList;
         int m_aliveNeighbours = 0;
 
     public:
@@ -22,6 +22,7 @@ class Cell
 
         Cell& updateState();
         Cell& countAliveNeighbours();
+        Cell& addNeighbourList(std::array<Cell*, 8> newList);
 
         Cell& operator[](const int index);   // access neighbour
         Cell& operator+(const Cell c2);             // add a cell to neighnbour list

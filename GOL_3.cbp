@@ -39,16 +39,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="libs/catch.hpp" />
-		<Unit filename="libs/catch_reporter_automake.hpp" />
-		<Unit filename="libs/catch_reporter_tap.hpp" />
-		<Unit filename="libs/catch_reporter_teamcity.hpp" />
+		<Unit filename="libs/catch2/catch.hpp" />
+		<Unit filename="libs/catch2/catch_reporter_automake.hpp" />
+		<Unit filename="libs/catch2/catch_reporter_tap.hpp" />
+		<Unit filename="libs/catch2/catch_reporter_teamcity.hpp" />
 		<Unit filename="src/Cell.cpp" />
 		<Unit filename="src/Cell.h" />
 		<Unit filename="src/Map2D.cpp" />
 		<Unit filename="src/Map2D.h" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="test/Cell_TEST.h" />
+		<Unit filename="test/Cell_TEST.cpp" />
 		<Unit filename="test/TEST.h" />
 		<Extensions>
 			<code_completion />

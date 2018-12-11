@@ -55,6 +55,8 @@ void Map2D::init(int chance)
     this->setNeighbourLists();
 }
 
+
+//generate full neighbourlist and pass to new function Cell.addNeighbourList(std::array<Cell*, 8>)
 void Map2D::setNeighbourLists()
 {
     for (int y = 0; y < m_height; ++y)

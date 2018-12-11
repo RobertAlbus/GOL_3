@@ -36,21 +36,22 @@ TEST_CASE( "Cell state management tests"){
     }
 }
 
+TEST_CASE( "Cell.addNeighbourList() tests" ){
+
+    #include <array>
+
+    Cell cell(true);
+    std::array<Cell*, 8> newList;
+    for (int i = 0; i < 4; ++i)
+        newList[i] = new Cell(true);
+    for (int i = 0; i < 4; ++i)
+        newList[i + 4] = new Cell(false);
+
+    cell.addNeighbourList(newList);
+}
+
+
 // update the addNeighbour functionality to take in array<Cell*, 8>
 // this will fix the ability to over- or under-assign neighbours to a cell
 TEST_CASE( "Cell.countAliveNeighbours() tests" ){
-
-    Cell cell(true);
-    Cell N1(true);
-    Cell N2(true);
-    Cell N3(false);
-    cell + N1 + N2 + N3;
-
-    SECTION( "Cell.CountAliveNeighbours() should return >= 0" ){
-        REQUIRE( cell.countAliveNeighbours() >= 0 );
-    }
-
-    SECTION( "Cell.CountAliveNeighbours() should return <= 8" ){
-        REQUIRE( cell.countAliveNeighbours() <= 8 );
-    }
 }
