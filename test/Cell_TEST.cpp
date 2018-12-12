@@ -18,7 +18,7 @@ TEST_CASE( "Cell constructors tests" ){
     }
 }
 
-TEST_CASE( "Cell state management tests"){
+TEST_CASE( "Cell state management tests" ){
 
     Cell cell(true);
 
@@ -57,7 +57,15 @@ TEST_CASE( "Cell.addNeighbourList() tests" ){
         Cell cell;
         REQUIRE_NOTHROW( cell.addNeighbourList(neighbourList) );
     }
+
+    // cleanup
+    for (int i = 0; i < 8; ++i)
+    {
+        delete neighbourList[i];
+    }
+
 }
 
 TEST_CASE( "Cell.countAliveNeighbours() tests" ){
+
 }
