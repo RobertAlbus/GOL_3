@@ -68,4 +68,27 @@ TEST_CASE( "Cell.addNeighbourList() tests" ){
 
 TEST_CASE( "Cell.countAliveNeighbours() tests" ){
 
+    std::array<Cell*, 8> neighbourList;
+    for (int i = 0; i < 8; ++i)
+    {
+        Cell* cell = new Cell;
+        neighbourList[i] = cell;
+    }
+
+    Cell cell;
+    cell.addNeighbourList(neighbourList);
+
+
+    // make countAliveNeighbours return int.
+    // make combo function for this and for updateState()
+    SECTION( "countAliveNeighbours() should return within range 0..8" ){
+        REQUIRE( cell.countAliveNeighbours() == 0);
+    }
+
+
+    // cleanup
+    for (int i = 0; i < 8; ++i)
+    {
+        delete neighbourList[i];
+    }
 }

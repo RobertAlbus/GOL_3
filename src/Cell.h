@@ -25,7 +25,6 @@ class Cell
         Cell& addNeighbourList(std::array<Cell*, 8> newList);
 
         Cell& operator[](const int index);   // access neighbour
-        Cell& operator+(const Cell c2);             // add a cell to neighnbour list
 };
 
 #endif // CELL_H
